@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_1/view/rechercheView.dart';
-import 'package:projet_1/widget/customAppBar2.dart';
-import 'package:projet_1/widget/customButton.dart';
+import 'package:illizi/view/rechercheView.dart';
+import 'package:illizi/widget/customAppBar2.dart';
+import 'package:illizi/widget/customButton.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});

@@ -1,18 +1,16 @@
-import 'package:illizi/models/abstractJson.dart';
+import 'abstractJson.dart';
 
-class UserModel extends AbstractJsonResource {
+class RegisterUserModel extends AbstractJsonResource {
   String? status;
   String? message;
   User? user;
-  String? token;
 
-  UserModel({this.status, this.message, this.user, this.token});
+  RegisterUserModel({this.status, this.message, this.user});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  RegisterUserModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    token = json['token'];
   }
 
   Map<String, dynamic> toJson() {
@@ -22,47 +20,46 @@ class UserModel extends AbstractJsonResource {
     if (this.user != null) {
       data['user'] = this.user!.toJson();
     }
-    data['token'] = this.token;
     return data;
   }
 }
 
 class User {
-  String? sId;
   String? username;
   String? email;
   String? password;
   String? image;
   String? role;
+  String? sId;
   int? iV;
 
   User(
-      {this.sId,
-        this.username,
+      {this.username,
         this.email,
         this.password,
         this.image,
         this.role,
+        this.sId,
         this.iV});
 
   User.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
     username = json['username'];
     email = json['email'];
     password = json['password'];
     image = json['image'];
     role = json['role'];
+    sId = json['_id'];
     iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
     data['username'] = this.username;
     data['email'] = this.email;
     data['password'] = this.password;
     data['image'] = this.image;
     data['role'] = this.role;
+    data['_id'] = this.sId;
     data['__v'] = this.iV;
     return data;
   }

@@ -1,50 +1,67 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_1/widget/customAppBar.dart';
+import 'package:get/get.dart';
+import 'package:illizi/controllers/produitContoller.dart';
+import 'package:illizi/widget/customAppBar.dart';
 
 import '../widget/customProductList.dart';
 
-class ListeView extends StatefulWidget {
-  const ListeView({super.key});
+class ListeView extends GetView<ProduitController> {
+  ListeView({super.key});
 
-  @override
-  State<ListeView> createState() => _ListeViewState();
-}
-
-class _ListeViewState extends State<ListeView> {
   ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
+    controller.getProduits();
     return Scaffold(
         body: Container(
-            height: MediaQuery.of(context).size.height ,
-            width: MediaQuery.of(context).size.width,
-            color: Colors.white,
-            child: SingleChildScrollView(
-
-    child: Column(
-      children: [
-        CustomAppBar(),
-        SingleChildScrollView(
-          child: ListView.builder(
-              controller: scrollController,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return const Column(
-                  children: [
-                    CustomProductList(imageUser: 'assets/images/logo.png',nbrArticle: '1',
-                      quantiteRestante: '0',prix: '62500',imageProd: 'assets/images/produit.png',),
-                    SizedBox(
-                      height: 10,
-                    )
-                  ],
-                );
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      child: SingleChildScrollView(
+          child: Column(
+        children: [
+          CustomAppBar(),
+          SingleChildScrollView(
+              child: GetBuilder<ProduitController>(builder: (c) {
+            return Container(
+                child: FutureBuilder(
+              future: controller.waitAndLoadData(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListView.builder(
+                      controller: scrollController,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            CustomProductList(
+                              imageUser: 'assets/images/logo.png',
+                              nbrArticle:
+                                  '${c.listeProduits?.data?[index].quantity}',
+                              quantiteRestante:
+                                  '${c.listeProduits?.data?[index].quantity}',
+                              prix: '${c.listeProduits?.data?[index].prix}',
+                              imageProd: '${c.listeProduits?.data?[index].image}'
+                            ),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        );
+                      },
+                      itemCount: c.listeProduits?.data?.length ?? 0);
+                }
               },
-              itemCount: 10),
-        )
-      ],
-    )),
+            ));
+          }))
+        ],
+      )),
     )
 
         //       Column(

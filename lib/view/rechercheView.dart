@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_1/widget/customAppBar2.dart';
+import 'package:illizi/widget/customAppBar2.dart';
 
 class RechercheView extends StatefulWidget {
   const RechercheView({super.key});

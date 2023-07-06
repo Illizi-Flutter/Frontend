@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:projet_1/networking/loginApi.dart';
-import 'package:projet_1/view/categoryView.dart';
+import 'package:illizi/networking/loginApi.dart';
+import 'package:illizi/view/categoryView.dart';
+import 'package:illizi/view/listeView.dart';
 
 import '../models/User.dart';
 
@@ -19,7 +20,7 @@ class LoginController extends GetxController {
         (value) => {
               userModel = value as UserModel,
               print('user=========> $userModel'),
-          Get.to(CategoryView())
+         // Get.to(ListeView())
             });
   }
 }

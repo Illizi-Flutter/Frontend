@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomProductList extends StatelessWidget {
   final String? imageUser,comment, nbrArticle,quantiteRestante, prix, imageProd;
-  const CustomProductList({super.key, this.imageUser, this.comment, this.nbrArticle, this.quantiteRestante, this.prix, this.imageProd});
+   CustomProductList({super.key, this.imageUser, this.comment, this.nbrArticle, this.quantiteRestante, this.prix, this.imageProd});
 
   @override
   Widget build(BuildContext context) {

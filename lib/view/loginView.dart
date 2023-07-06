@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projet_1/controllers/loginController.dart';
-import 'package:projet_1/view/categoryView.dart';
-import 'package:projet_1/view/listeView.dart';
-import 'package:projet_1/view/registerView.dart';
-import 'package:projet_1/widget/customBackGroundImage.dart';
-import 'package:projet_1/widget/customButton.dart';
-import 'package:projet_1/widget/customTextField.dart';
+import 'package:illizi/controllers/loginController.dart';
+import 'package:illizi/view/categoryView.dart';
+import 'package:illizi/view/listeView.dart';
+import 'package:illizi/view/registerView.dart';
+import 'package:illizi/widget/customBackGroundImage.dart';
+import 'package:illizi/widget/customButton.dart';
+import 'package:illizi/widget/customTextField.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
@@ -19,14 +19,10 @@ class LoginView extends GetView<LoginController> {
       Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
-            child:
-            Column(
+            child: Column(
               children: [
                 SizedBox(
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * .1,
+                  height: MediaQuery.of(context).size.height * .1,
                 ),
                 Image.asset(
                   "assets/images/logo.png",
@@ -69,13 +65,16 @@ class LoginView extends GetView<LoginController> {
                       color: Colors.white,
                     ),
                     child: CustomTextField(
-                        label: 'Email',
-                        hintText: 'Enter valid email id as example@gmail.com',
-                        icon: Icon(
-                          Icons.email_rounded,
-                          size: 40,
-                          color: Colors.blue,
-                        ), obscureText: false, textEditingController: controller.email,),
+                      label: 'Email',
+                      hintText: 'Enter valid email id as example@gmail.com',
+                      icon: Icon(
+                        Icons.email_rounded,
+                        size: 40,
+                        color: Colors.blue,
+                      ),
+                      obscureText: false,
+                      textEditingController: controller.email,
+                    ),
                   ),
                 ),
                 Padding(
@@ -94,58 +93,66 @@ class LoginView extends GetView<LoginController> {
                         color: Colors.white,
                       ),
                       child: CustomTextField(
-                          label: 'Password',
-
-                          hintText:
-                          'Enter secure password between 6 and 8 characters',
-                          icon: Icon(Icons.lock_rounded,
-                              size: 40, color: Colors.blue),
-                          obscureText: true,
-                          suffixIcon: Icon(
-                            Icons.visibility_off, color: Colors.blue,
-                          ), textEditingController: controller.password,)),
+                        label: 'Password',
+                        hintText:
+                            'Enter secure password between 6 and 8 characters',
+                        icon: Icon(Icons.lock_rounded,
+                            size: 40, color: Colors.blue),
+                        obscureText: true,
+                        suffixIcon: Icon(
+                          Icons.visibility_off,
+                          color: Colors.blue,
+                        ),
+                        textEditingController: controller.password,
+                      )),
                 ),
                 SizedBox(
                   height: 8,
                 ),
 
                 CustomButton(
-                    text: 'Connexion', color: Colors.blue,
+                    text: 'Connexion',
+                    color: Colors.blue,
                     function: () {
                       controller.login(context);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => ListeView()));
                     }
-                //   Navigator.of(context).push(
-                //       MaterialPageRoute(builder: (context) => CategoryView()));
-                //
-                 // }
-                  ),
+                    //   Navigator.of(context).push(
+                    //       MaterialPageRoute(builder: (context) => CategoryView()));
+                    //
+                    // }
+                    ),
 
                 const SizedBox(
                   height: 30,
                 ),
-                GestureDetector(child: RichText(
-                  text: const TextSpan(
-                    // Note: Styles for TextSpans must be explicitly defined.
-                    // Child text spans will inherit styles from parent
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
+                GestureDetector(
+                  child: RichText(
+                    text: const TextSpan(
+                      // Note: Styles for TextSpans must be explicitly defined.
+                      // Child text spans will inherit styles from parent
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(text: 'Pas encore inscrit?'),
+                        TextSpan(
+                            text: 'Créer un compte',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                            )),
+                      ],
                     ),
-                    children: <TextSpan>[
-                      TextSpan(text: 'Pas encore inscrit?'),
-                      TextSpan(
-                          text: 'Créer un compte',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          )),
-                    ],
                   ),
-                ), onTap: () {
-                  controller.login(context);
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => RegisterView()));
-                },),
+                  onTap: () {
+                    controller.login(context);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => RegisterView()));
+                  },
+                ),
                 const SizedBox(
                   height: 30,
                 ),

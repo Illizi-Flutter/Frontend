@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projet_1/config/bindings.dart';
-import 'package:projet_1/view/loginView.dart';
+import 'package:illizi/config/bindings.dart';
+import 'package:illizi/view/loginView.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
       initialBinding: AllBindings(),
       title: 'Flutter Demo',
       theme: ThemeData(

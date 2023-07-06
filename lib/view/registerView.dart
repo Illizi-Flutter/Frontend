@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projet_1/controllers/loginController.dart';
-import 'package:projet_1/view/loginView.dart';
+import 'package:illizi/controllers/registerController.dart';
+import 'package:illizi/view/loginView.dart';
 
 import '../widget/customBackGroundImage.dart';
 import '../widget/customButton.dart';
 import '../widget/customTextField.dart';
 import 'listeView.dart';
 
-class RegisterView extends GetView<LoginController> {
+class RegisterView extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
@@ -135,9 +135,13 @@ class RegisterView extends GetView<LoginController> {
                     text: "S'inscrire",
                     color: Colors.blue,
                     function: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginView()));
-                    }),
+                      print('register');
+                      print('username====>${controller.username.text}');
+                      print('email====>${controller.email.text}');
+                      print('password====>${controller.password.text}');
+                      controller.register(context);
+
+                      }),
 
                 //Container(
                 //child:
