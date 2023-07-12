@@ -36,6 +36,29 @@ abstract class ApiManager {
 
     return json;
   }
+  Future<AbstractJsonResource?> get() async {
+
+    AbstractJsonResource? json;
+    var data;
+    await dioSingleton.dio
+        .get( apiUrl()  ,queryParameters: data )
+        .then((value) {
+      print(value.statusCode);
+      if(value.statusCode!=200){
+        print("value.data !=200");
+      }else{
+
+        print("value.data ========200");
+        data = value.data;
+        json = fromJson(data);
+      }
+
+
+    });
+
+
+    return json;
+  }
   Future<AbstractJsonResource?> putData({dataToPost}) async {
 
     AbstractJsonResource? json;

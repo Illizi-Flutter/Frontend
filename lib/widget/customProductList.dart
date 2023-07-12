@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 class CustomProductList extends StatelessWidget {
   final String? imageUser,comment, nbrArticle,quantiteRestante, prix, imageProd;
-   CustomProductList({super.key, this.imageUser, this.comment, this.nbrArticle, this.quantiteRestante, this.prix, this.imageProd});
+  final AssetImage? image;
+   CustomProductList({super.key, this.imageUser, this.comment, this.nbrArticle, this.quantiteRestante, this.prix, this.imageProd, this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +92,11 @@ class CustomProductList extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          CircleAvatar(
-            radius: 90,
-            backgroundImage: AssetImage('$imageProd'),
-          ),
+          Container(
+            width: 180,
+              height: 250,
+            child: Image.network('$imageProd'),
+          )
         ],
       ),
     );

@@ -19,10 +19,14 @@ class ListeProduitApi extends ApiManager {
   }
 
   String formatter(String url) {
-    return "http://localhost:8000/" + url;
+    return AppConfig.base_url + url;
   }
 
-  String getImage(String image) {
-    return formatter("images/$image");
+  String getImage(String image)
+  {
+    String url = formatter("images/$image");
+    print("**********************************");
+    print(url);
+    return url;
   }
 }
