@@ -23,26 +23,32 @@ class _RechercheViewState extends State<RechercheView> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: [
-      CustomAppBar2(titre: 'Recherche', icon: Icons.close),
-      SizedBox(height: 20,),
-      Text('data'),
+      const CustomAppBar2(titre: 'Recherche', icon: Icons.close),
+      const SizedBox(
+        height: 20,
+      ),
+      const Text('data'),
       ListView.builder(
         shrinkWrap: true,
         itemCount: items.length,
         itemBuilder: (context, index) {
-          return
-          Column(children: [
-          ListTile(
-          title:
-          Text(items[index], style: TextStyle(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.w500
-          ),),
-          ),
-            Divider(
-              thickness: 1,color: Colors.blue,
-            )
-          ],);
-
+          return Column(
+            children: [
+              ListTile(
+                title: Text(
+                  items[index],
+                  style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                color: Colors.blue,
+              )
+            ],
+          );
         },
       )
     ]));

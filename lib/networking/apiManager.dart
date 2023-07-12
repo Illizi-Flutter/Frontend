@@ -40,9 +40,9 @@ abstract class ApiManager {
 
     AbstractJsonResource? json;
     var data;
-    print("putdata");
+    print("putdata=========> $dataToPost");
     await dioSingleton.dio
-        .patch( apiUrl()  ,data: dataToPost )
+        .put( apiUrl()  ,data: dataToPost )
         .then((value) {
       print(value.statusCode);
       print("*********");
@@ -64,7 +64,8 @@ abstract class ApiManager {
   /// POST DATA TO SERVER
   ///Post Data withOut Token
   Future<AbstractJsonResource?> postData(dataToPost) async {
-    print('postdata*******************');
+    print('postdata******************* $dataToPost');
+
     AbstractJsonResource? json;
     var data;
     return dioSingleton.dio

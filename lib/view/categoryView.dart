@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:illizi/controllers/categorieController.dart';
+import 'package:illizi/models/CategorieModel.dart';
+import 'package:illizi/models/addProduitModel.dart';
 import 'package:illizi/view/rechercheView.dart';
 import 'package:illizi/widget/customAppBar2.dart';
 import 'package:illizi/widget/customButton.dart';
 
-class CategoryView extends StatefulWidget {
-  const CategoryView({super.key});
+class CategoryView extends GetView<CategorieController>{
+  CategoryView({super.key});
 
-  @override
-  State<CategoryView> createState() => _CategoryViewState();
-}
-
-class _CategoryViewState extends State<CategoryView> {
    String? selectedValue;
-   String dropdownValue = 'Location';
+   String dropdownValue = 'Categorie des articles';
    List<String> dropdownLocation = [
      "Msaken",
      "ahloul",
@@ -29,6 +28,7 @@ class _CategoryViewState extends State<CategoryView> {
       SizedBox(
         height: 10,
       ),
+          /*
           DropdownButtonFormField<String>(
           hint: Padding(padding: EdgeInsets.only(left: 20),
 
@@ -49,12 +49,11 @@ class _CategoryViewState extends State<CategoryView> {
       padding: EdgeInsets.all(20),
             //  isExpanded: false,
             onChanged: (String? newValue) {
-              setState(() {
+
                 dropdownValue = newValue!;
-              });
             },
             icon: Icon(Icons.keyboard_arrow_down_sharp, color: Colors.blue, size: 35),
-            items: dropdownLocation.map<DropdownMenuItem<String>>(
+            items: controller.listeCategories?.data!.map<DropdownMenuItem<String>>(
                     (String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -65,9 +64,9 @@ class _CategoryViewState extends State<CategoryView> {
                             fontSize: 20, color: Colors.black, fontWeight: FontWeight.w500
                         ),)),);
 
-                }).toList(),
+                } as DropdownMenuItem<String> Function(Data e)).toList(),
 
-          ),
+          ),*/
           SizedBox(
             height: MediaQuery.of(context).size.height * .55,
           ),

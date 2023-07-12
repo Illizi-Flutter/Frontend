@@ -5,9 +5,14 @@ import 'package:illizi/controllers/loginController.dart';
 import 'package:illizi/view/categoryView.dart';
 import 'package:illizi/view/listeView.dart';
 import 'package:illizi/view/registerView.dart';
-import 'package:illizi/widget/customBackGroundImage.dart';
+import 'package:illizi/widget/customBackgroundImage.dart';
 import 'package:illizi/widget/customButton.dart';
+import 'package:illizi/widget/customAppBar2.dart';
 import 'package:illizi/widget/customTextField.dart';
+
+import '../widget/emailModal.dart';
+import '../widget/resetPasswordModal.dart';
+import 'changePasswordPage.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
@@ -15,7 +20,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      CustomBackGroundImage(),
+      const CustomBackGroundImage(),
       Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -29,7 +34,7 @@ class LoginView extends GetView<LoginController> {
                   width: 130,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
 
@@ -38,7 +43,7 @@ class LoginView extends GetView<LoginController> {
                         color: Colors.black,
                         fontFamily: 'UbuntuCondensed',
                         fontSize: 35)),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 const Text('Connectez-vous à votre compte',
@@ -46,7 +51,7 @@ class LoginView extends GetView<LoginController> {
                         color: Colors.black,
                         fontFamily: 'UbuntuCondensed',
                         fontSize: 21)),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -67,7 +72,7 @@ class LoginView extends GetView<LoginController> {
                     child: CustomTextField(
                       label: 'Email',
                       hintText: 'Enter valid email id as example@gmail.com',
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.email_rounded,
                         size: 40,
                         color: Colors.blue,
@@ -99,14 +104,19 @@ class LoginView extends GetView<LoginController> {
                         icon: Icon(Icons.lock_rounded,
                             size: 40, color: Colors.blue),
                         obscureText: true,
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.blue,
-                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            icon: const Icon(
+                              Icons.visibility_off,
+                              color: Colors.blue,
+                              size: 32,
+                            )),
                         textEditingController: controller.password,
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
 
@@ -115,8 +125,8 @@ class LoginView extends GetView<LoginController> {
                     color: Colors.blue,
                     function: () {
                       controller.login(context);
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => ListeView()));
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(builder: (context) => CategoryView()));
                     }
                     //   Navigator.of(context).push(
                     //       MaterialPageRoute(builder: (context) => CategoryView()));
@@ -130,8 +140,6 @@ class LoginView extends GetView<LoginController> {
                 GestureDetector(
                   child: RichText(
                     text: const TextSpan(
-                      // Note: Styles for TextSpans must be explicitly defined.
-                      // Child text spans will inherit styles from parent
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -156,34 +164,29 @@ class LoginView extends GetView<LoginController> {
                 const SizedBox(
                   height: 30,
                 ),
-                //Container(
                 //child:
-                RichText(
-                  text: const TextSpan(
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
+                GestureDetector(
+                  child: RichText(
+                    text: const TextSpan(
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
                           text: 'Mot de passe oublié',
                           style: TextStyle(
                             decoration: TextDecoration.underline,
-                          )),
-                    ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  onTap: () => showModalBottomSheet(
+                      context: context, builder: (context) => EmailModal()),
                 ),
-                //),
               ],
-            ), /*
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Image.asset(
-              'assets/images/bottom left background.png',
-              width: 82,
-              height: 73,
             ),
-          ),*/
           )),
     ]);
   }

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget{
   final String? label, hintText;
-  final Icon? icon, suffixIcon;
+  final Icon? icon;
+  final IconButton? suffixIcon;
   final Function? function;
   final bool obscureText;
-  final TextEditingController textEditingController;
-  const CustomTextField({super.key, this.label, this.hintText, this.icon, this.function, required this.obscureText, this.suffixIcon, required this.textEditingController});
+  final TextEditingController? textEditingController;
+  const CustomTextField({super.key, this.label, this.hintText, this.icon, this.function, required this.obscureText, this.suffixIcon, this.textEditingController});
 
   @override
   Widget build(BuildContext context) {

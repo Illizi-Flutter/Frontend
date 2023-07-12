@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:illizi/controllers/produitContoller.dart';
+import 'package:illizi/models/listeProduitModel.dart';
+import 'package:illizi/networking/listeProduitApi.dart';
 import 'package:illizi/widget/customAppBar.dart';
 
 import '../widget/customProductList.dart';
@@ -22,7 +24,7 @@ class ListeView extends GetView<ProduitController> {
       child: SingleChildScrollView(
           child: Column(
         children: [
-          CustomAppBar(),
+          const CustomAppBar(),
           SingleChildScrollView(
               child: GetBuilder<ProduitController>(builder: (c) {
             return Container(
@@ -30,7 +32,7 @@ class ListeView extends GetView<ProduitController> {
               future: controller.waitAndLoadData(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
@@ -47,11 +49,12 @@ class ListeView extends GetView<ProduitController> {
                               quantiteRestante:
                                   '${c.listeProduits?.data?[index].quantity}',
                               prix: '${c.listeProduits?.data?[index].prix}',
-                              imageProd: '${c.listeProduits?.data?[index].image}'
+                              imageProd: ListeProduitApi().getImage('${c.listeProduits?.data?[index].image}'),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
-                            )
+                            ),
+                           Text(ListeProduitApi().getImage('${c.listeProduits?.data?[index].image}'))
                           ],
                         );
                       },
@@ -64,22 +67,6 @@ class ListeView extends GetView<ProduitController> {
       )),
     )
 
-        //       Column(
-        //   children: [
-        //       CustomAppBar(),
-        //       SizedBox(
-        //         height: 20,
-        //       ),
-        //       Text('data', ),
-        //       ListView.builder(
-        //         itemCount: 1,
-        //         itemBuilder: (BuildContext context, int index) {
-        //           return Text('rrrrrrr $index');
-        //         },
-        //       ),
-        //       Text('gggg')
-        //   ],
-        // ),
         );
   }
 }

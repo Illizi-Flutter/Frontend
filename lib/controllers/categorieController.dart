@@ -3,14 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:illizi/networking/listeProduitApi.dart';
 import 'package:illizi/view/categoryView.dart';
-import 'package:illizi/models/listeProduitModel.dart';
 
-class ProduitController extends GetxController {
+import '../models/CategorieModel.dart';
+import '../networking/categorieApi.dart';
 
-  ListeProduitApi listeProduitApi = ListeProduitApi();
-  ListeProduitModel? listeProduits;
+class CategorieController extends GetxController {
+
+  CategorieApi categorieApi = CategorieApi();
+  CategorieModel? listeCategories;
   /*************************************************************/
   var dataLoaded = false.obs;
 
@@ -29,16 +30,10 @@ class ProduitController extends GetxController {
   }
 
 
-
-
-
-
-
-
-  getProduits()async {
-    await listeProduitApi.getData().then((value) =>  {
-      print('liste produits=======> $value}'),
-      listeProduits = value as ListeProduitModel
+  getCategories()async {
+    await categorieApi.getData().then((value) =>  {
+      print('liste categories=======> $value}'),
+      listeCategories = value as CategorieModel
     });
   }
 }

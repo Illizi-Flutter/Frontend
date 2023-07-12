@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -88,7 +91,10 @@ class CustomProductList extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          Image.asset("$imageProd", width: 150)
+          CircleAvatar(
+            radius: 90,
+            backgroundImage: AssetImage('$imageProd'),
+          ),
         ],
       ),
     );
