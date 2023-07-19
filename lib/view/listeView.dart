@@ -15,7 +15,7 @@ class ListeView extends GetView<ProduitController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getProduits();
+    controller.getProductsByUserId();
     return Scaffold(
         body: Container(
           height: MediaQuery.of(context).size.height,
@@ -43,22 +43,27 @@ class ListeView extends GetView<ProduitController> {
                                         return Column(
                                           children: [
                                             CustomProductList(
-                                              imageUser: 'assets/images/logo.png',
+                                              imageUser:
+                                              ListeProduitApi().getImage('${c.listeProduitsUser?.data?[index].imageUser}'),
+                                              username:
+                                              '${c.listeProduitsUser?.data?[index].username}',
+
                                               nbrArticle:
-                                              '${c.listeProduits?.data?[index].quantity}',
-                                              quantiteRestante:
-                                              '${c.listeProduits?.data?[index].quantity}',
-                                              prix: '${c.listeProduits?.data?[index].prix}',
-                                              imageProd: ListeProduitApi().getImage('${c.listeProduits?.data?[index].image}'),
+                                              '${c.listeProduitsUser?.data?[index].quantity}',
+                                              // quantiteRestante:
+                                              // '${c.listeProduitsUser?.data?[index].quantity}',
+                                              prix: '${c.listeProduitsUser?.data?[index].prix}',
+                                              imageProd:
+                                              ListeProduitApi().getImage('${c.listeProduitsUser?.data?[index].imageProd}'),
                                             ),
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            // Text(ListeProduitApi().getImage('${c.listeProduits?.data?[index].image}'))
+                                            // Text('${c.listeProduitsUser?.data?[index].quantity}')
                                           ],
                                         );
                                       },
-                                      itemCount: c.listeProduits?.data?.length ?? 0);
+                                      itemCount: c.listeProduitsUser?.data?.length ?? 0);
                                 }
                               },
                             ));

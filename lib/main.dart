@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:illizi/config/bindings.dart';
-import 'package:illizi/view/listeView.dart';
 import 'package:illizi/view/loginView.dart';
 
 void main() async{
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
         useMaterial3: true,
       ),
-      home:ListeView(),
+      home:LoginView(),
     );
   }
 }

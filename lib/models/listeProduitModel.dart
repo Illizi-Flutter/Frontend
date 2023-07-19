@@ -1,6 +1,6 @@
 import 'package:illizi/models/abstractJson.dart';
 
-class ListeProduitModel extends AbstractJsonResource{
+class ListeProduitModel extends AbstractJsonResource {
   String? status;
   String? message;
   List<Data>? data;
@@ -30,58 +30,46 @@ class ListeProduitModel extends AbstractJsonResource{
 }
 
 class Data {
-  String? sId;
   String? nom;
   int? prix;
   int? quantity;
-  String? description;
-  String? adresse;
-  String? image;
   bool? isEnabled;
-  String? etat;
-  int? iV;
-  String? categorie;
+  String? userId;
+  String? username;
+  String? imageUser;
+  String? imageProd;
 
   Data(
-      {this.sId,
-        this.nom,
+      {this.nom,
         this.prix,
         this.quantity,
-        this.description,
-        this.adresse,
-        this.image,
         this.isEnabled,
-        this.etat,
-        this.iV,
-        this.categorie});
+        this.userId,
+        this.username,
+        this.imageUser,
+        this.imageProd});
 
   Data.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
     nom = json['nom'];
     prix = json['prix'];
     quantity = json['quantity'];
-    description = json['description'];
-    adresse = json['adresse'];
-    image = json['image'];
     isEnabled = json['isEnabled'];
-    etat = json['etat'];
-    iV = json['__v'];
-    categorie = json['categorie'];
+    userId = json['user_id'];
+    username = json['username'];
+    imageUser = json['imageUser'];
+    imageProd = json['imageProd'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
     data['nom'] = this.nom;
     data['prix'] = this.prix;
     data['quantity'] = this.quantity;
-    data['description'] = this.description;
-    data['adresse'] = this.adresse;
-    data['image'] = this.image;
     data['isEnabled'] = this.isEnabled;
-    data['etat'] = this.etat;
-    data['__v'] = this.iV;
-    data['categorie'] = this.categorie;
+    data['user_id'] = this.userId;
+    data['username'] = this.username;
+    data['imageUser'] = this.imageUser;
+    data['imageProd'] = this.imageProd;
     return data;
   }
 }

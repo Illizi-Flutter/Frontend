@@ -9,6 +9,7 @@ import '../widget/customTextField.dart';
 import 'listeView.dart';
 
 class RegisterView extends GetView<RegisterController> {
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -19,7 +20,7 @@ class RegisterView extends GetView<RegisterController> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 Align(
                   alignment: Alignment.topLeft,
@@ -57,7 +58,7 @@ class RegisterView extends GetView<RegisterController> {
                         fontFamily: 'UbuntuCondensed',
                         fontSize: 21)),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15),
@@ -140,11 +141,12 @@ class RegisterView extends GetView<RegisterController> {
                         suffixIcon: IconButton(
                           icon: Icon(
                             // Based on passwordVisible state choose the icon
-                            true
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                            true ? Icons.visibility : Icons.visibility_off,
                             color: Theme.of(context).primaryColorDark,
-                          ), onPressed: () {  Icons.visibility_off;},
+                          ),
+                          onPressed: () {
+                            Icons.visibility_off;
+                          },
                         ),
                         // IconButton(
                         //     onPressed: () {
@@ -159,17 +161,55 @@ class RegisterView extends GetView<RegisterController> {
                         textEditingController: controller.password,
                       )),
                 ),
-                const SizedBox(
-                  height: 8,
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Container(
+                    child: StatefulBuilder(builder: (context, _setState) {
+                      return Row(
+                        children: [
+                          Expanded(
+                              child: RadioListTile(
+                            value: "Client",
+                            groupValue: controller.role.text,
+                            activeColor: Colors.blue,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            title: Text("Client"),
+                            tileColor: Colors.blue.shade100,
+                            onChanged: (value) =>
+                                controller.role.text = value.toString(),
+                          )),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: RadioListTile(
+                                value: "Admin",
+                                groupValue: controller.role.text,
+                                activeColor: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                title: Text("Admin"),
+                                tileColor: Colors.blue.shade100,
+                                // onChanged: (value) {
+                                //   controller.role.text = value.toString();
+                                //   print(value.toString());
+                                // })),
+
+                                onChanged: (value) => _setState(() {
+                                      controller.role.text = value.toString();
+                                      print(controller.role.text);
+                                    })),
+                          )
+                        ],
+                      );
+                    }),
+                  ),
                 ),
                 CustomButton(
                     text: "S'inscrire",
                     color: Colors.blue,
                     function: () {
-                      print('register');
-                      print('username====>${controller.username.text}');
-                      print('email====>${controller.email.text}');
-                      print('password====>${controller.password.text}');
                       controller.register(context);
                     }),
               ],

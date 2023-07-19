@@ -9,7 +9,7 @@ class AppConfig {
   static const String verifyCode_url = base_url + "user/verifyCode";
   static const String getUsers_url = base_url + "user/getUsers";
 
-  static const String getProduits_url = base_url + "produit/getAll";
+  static const String getProduits_url = base_url + "produit/getProductByUserId";
   static const String getProdById_url = base_url + "produit/getProdById";
   static const String addProd_url = base_url + "produit/addProd";
   static const String updateProd_url = base_url + "produit/updateProd";

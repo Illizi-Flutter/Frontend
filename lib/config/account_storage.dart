@@ -9,7 +9,7 @@ class AccountStorage {
     SecureStorage.writeSecureData(key: _keyEmail, value: email);
   }
   static String? readEmail(){
-    print('email');
+    // print('email');
     return SecureStorage.readSecureData(_keyEmail);
   }
 }

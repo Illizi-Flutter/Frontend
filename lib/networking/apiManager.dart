@@ -2,9 +2,6 @@
 import '../../models/abstractJson.dart';
 import '../config/dio_singleton.dart';
 
-
-
-
 abstract class ApiManager {
   final DioSingleton dioSingleton = DioSingleton();
 
@@ -20,20 +17,15 @@ abstract class ApiManager {
     await dioSingleton.dio
         .get( apiUrl()  ,queryParameters: data )
         .then((value) {
-      print(value.statusCode);
+      // print(value.statusCode);
       if(value.statusCode!=200){
         print("value.data !=200");
       }else{
-
-        print("value.data ========200");
+        // print("value.data ========200");
         data = value.data;
         json = fromJson(data);
       }
-
-
     });
-
-
     return json;
   }
   Future<AbstractJsonResource?> get() async {
@@ -43,12 +35,12 @@ abstract class ApiManager {
     await dioSingleton.dio
         .get( apiUrl()  ,queryParameters: data )
         .then((value) {
-      print(value.statusCode);
+      // print(value.statusCode);
       if(value.statusCode!=200){
         print("value.data !=200");
       }else{
 
-        print("value.data ========200");
+        // print("value.data ========200");
         data = value.data;
         json = fromJson(data);
       }
@@ -63,17 +55,17 @@ abstract class ApiManager {
 
     AbstractJsonResource? json;
     var data;
-    print("putdata=========> $dataToPost");
+    // print("putdata=========> $dataToPost");
     await dioSingleton.dio
         .put( apiUrl()  ,data: dataToPost )
         .then((value) {
-      print(value.statusCode);
-      print("*********");
+      // print(value.statusCode);
+      // print("*********");
       if(value.statusCode!=200){
         print("value.data !=200");
       }else{
 
-        print("value.data ========200");
+        // print("value.data ========200");
         data = value.data;
         json = fromJson(data);
       }
@@ -87,7 +79,7 @@ abstract class ApiManager {
   /// POST DATA TO SERVER
   ///Post Data withOut Token
   Future<AbstractJsonResource?> postData(dataToPost) async {
-    print('postdata******************* $dataToPost');
+    // print('postdata******************* $dataToPost');
 
     AbstractJsonResource? json;
     var data;
@@ -97,7 +89,7 @@ abstract class ApiManager {
       data: dataToPost,
     )
         .then((value) {
-          print('data to post =======> $value');
+          // print('data to post =======> $value');
       data = value.data;
       json = fromJson(data);
       return json;

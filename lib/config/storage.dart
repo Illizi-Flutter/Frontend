@@ -9,7 +9,7 @@ class SecureStorage {
 
   static Future? writeSecureData({required String key,required String value})  async {
 
-    print("i save the $key==  $value ");
+    // print("i save the $key==  $value ");
     var writeData = await box.write( key,value);
     return writeData;
   }
@@ -25,9 +25,9 @@ class SecureStorage {
     return readData;
   }
   static  String? readSecureData(String key)   {
-    print('key====> ^$key++++++${box.read(key)}');
+    // print('key====> ^$key++++++${box.read(key)}');
     var readData=box.read(key);
-    print('readData======> $readData');
+    // print('readData======> $readData');
     return readData;
   }
   static Future? deleteSecureData(String key) async{

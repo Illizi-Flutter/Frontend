@@ -7,7 +7,7 @@ import 'package:illizi/view/categoryView.dart';
 
 import 'package:illizi/view/listeView.dart';
 
-import '../models/User.dart';
+import '../models/userModel.dart';
 import '../models/changePasswordModel.dart';
 import '../models/forgotPasswordModel.dart';
 import '../models/verifyCodeModel.dart';
@@ -16,8 +16,6 @@ import '../networking/forgotPasswordApi.dart';
 import '../networking/resetCodeApi.dart';
 import '../models/ResetCodeModel.dart';
 import '../networking/verifyCodeApi.dart';
-import '../view/changePasswordPage.dart';
-import '../widget/activationCodeModal.dart';
 import '../widget/resetPasswordModal.dart';
 
 class LoginController extends GetxController {
@@ -28,7 +26,6 @@ class LoginController extends GetxController {
 
   TextEditingController oldPassword = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
-
 
   TextEditingController inputCode1 = TextEditingController();
   TextEditingController inputCode2 = TextEditingController();
@@ -51,19 +48,17 @@ class LoginController extends GetxController {
   VerifyCodeModel? verifyCodeModel;
 
   login(context) {
-    print('login*********************');
-    loginApi.postData({
-      "email": email.text,
-      "password": password.text
-    }).then((value) => {
-          userModel = value as UserModel,
-          print('user=========> $userModel'),
-          AccountStorage.saveEmail('${userModel!.user?.email}'),
-          print('***************************read email**********************'),
-          password.text = '',
-          email.text = '',
-          Get.to(ListeView())
-        });
+    // print('login*********************');
+    loginApi.postData({"email": email.text, "password": password.text}).then(
+        (value) => {
+              userModel = value as UserModel,
+              // print('user=========> $userModel'),
+              AccountStorage.saveEmail('${userModel!.user?.email}'),
+              // print('***************************read email**********************'),
+              password.text = '',
+              email.text = '',
+              Get.to(ListeView())
+            });
   }
 
   changePassword(context) {
@@ -74,12 +69,11 @@ class LoginController extends GetxController {
       "confirmPassword": confirmPassword.text
     };
     try {
-      print(
-          'changePassword********************* ${AccountStorage.readEmail()}');
+      // print('changePassword********************* ${AccountStorage.readEmail()}');
       changePasswordApi.putData(dataToPost: data).then((value) => {
-            print('********************************************* $data'),
+            // print('********************************************* $data'),
             changePasswordModel = value as ChangePasswordModel,
-            print('changePassword=========> '),
+            // print('changePassword=========> '),
             password.text = '',
             confirmPassword.text = '',
             Get.to(CategoryView())
@@ -97,30 +91,24 @@ class LoginController extends GetxController {
           resetCodeModel = value as ResetCodeModel,
           AccountStorage.saveEmail('${resetCodeModel?.emailCode}'),
           emailCode.text = '',
-    showModalBottomSheet(
-    context: context,
-    builder: (context) =>
-        ResetPasswordModal())
+          showModalBottomSheet(
+              context: context, builder: (context) => ResetPasswordModal())
         });
   }
 
   verifyCode(context) {
-    print('login*********************');
-    verifyCodeApi.postData({'resetCode': '${inputCode1.text + inputCode2.text
-        + inputCode3.text+ inputCode4.text}','email':AccountStorage.readEmail()
-    }).then((value) =>
-    {
-      verifyCodeModel = value as VerifyCodeModel, print('verifyCode=========> $verifyCodeModel'),
-    showModalBottomSheet(
-    context: context,
-    builder: (context) =>
-    ResetPasswordModal())
-    }
-    );
-
-    }
-
-
+    // print('login*********************');
+    verifyCodeApi.postData({
+      'resetCode':
+          '${inputCode1.text + inputCode2.text + inputCode3.text + inputCode4.text}',
+      'email': AccountStorage.readEmail()
+    }).then((value) => {
+          verifyCodeModel = value as VerifyCodeModel,
+          // print('verifyCode=========> $verifyCodeModel'),
+          showModalBottomSheet(
+              context: context, builder: (context) => ResetPasswordModal())
+        });
+  }
 
   forgotPassword(context) {
     Map<String, dynamic> data = {
@@ -129,12 +117,10 @@ class LoginController extends GetxController {
       "confirmPassword": confirmPassword.text
     };
     forgotPasswordApi.putData(dataToPost: data).then((value) => {
-      forgotPasswordModel = value as ForgotPasswordModel,
-      password.text = '',
-      confirmPassword.text = '',
-      Get.to(CategoryView())
-
-    });
-
+          forgotPasswordModel = value as ForgotPasswordModel,
+          password.text = '',
+          confirmPassword.text = '',
+          Get.to(CategoryView())
+        });
   }
 }

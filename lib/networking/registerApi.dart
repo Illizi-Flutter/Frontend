@@ -1,5 +1,5 @@
 import 'package:illizi/config/app_config.dart';
-import 'package:illizi/models/User.dart';
+import 'package:illizi/models/userModel.dart';
 import 'package:illizi/models/abstractJson.dart';
 import 'package:illizi/models/registerUserModel.dart';
 import 'package:illizi/networking/apiManager.dart';

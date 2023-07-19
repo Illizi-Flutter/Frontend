@@ -8,13 +8,13 @@ import '../models/abstractJson.dart';
 class ListeProduitApi extends ApiManager {
   @override
   String apiUrl() {
-    print('url getProduits =====> ${AppConfig.getProduits_url}');
+    // print('url getProduits =====> ${AppConfig.getProduits_url}');
     return AppConfig.getProduits_url;
   }
 
   @override
   AbstractJsonResource fromJson(data) {
-    print('data===============> $data');
+    // print('data===============> $data');
     return ListeProduitModel.fromJson(data);
   }
 
@@ -25,8 +25,8 @@ class ListeProduitApi extends ApiManager {
   String getImage(String image)
   {
     String url = formatter("images/$image");
-    print("**********************************");
-    print(url);
+    // print("**********************************");
+    // print(url);
     return url;
   }
 }
