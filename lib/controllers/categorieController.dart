@@ -1,9 +1,5 @@
 import 'dart:async';
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:illizi/view/categoryView.dart';
 
 import '../models/CategorieModel.dart';
 import '../networking/categorieApi.dart';
@@ -12,7 +8,7 @@ class CategorieController extends GetxController {
 
   CategorieApi categorieApi = CategorieApi();
   CategorieModel? listeCategories;
-  /*************************************************************/
+
   var dataLoaded = false.obs;
 
 

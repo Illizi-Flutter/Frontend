@@ -48,13 +48,10 @@ class LoginController extends GetxController {
   VerifyCodeModel? verifyCodeModel;
 
   login(context) {
-    // print('login*********************');
     loginApi.postData({"email": email.text, "password": password.text}).then(
         (value) => {
               userModel = value as UserModel,
-              // print('user=========> $userModel'),
               AccountStorage.saveEmail('${userModel!.user?.email}'),
-              // print('***************************read email**********************'),
               password.text = '',
               email.text = '',
               Get.to(ListeView())
@@ -69,11 +66,8 @@ class LoginController extends GetxController {
       "confirmPassword": confirmPassword.text
     };
     try {
-      // print('changePassword********************* ${AccountStorage.readEmail()}');
       changePasswordApi.putData(dataToPost: data).then((value) => {
-            // print('********************************************* $data'),
             changePasswordModel = value as ChangePasswordModel,
-            // print('changePassword=========> '),
             password.text = '',
             confirmPassword.text = '',
             Get.to(CategoryView())
@@ -97,14 +91,12 @@ class LoginController extends GetxController {
   }
 
   verifyCode(context) {
-    // print('login*********************');
     verifyCodeApi.postData({
       'resetCode':
           '${inputCode1.text + inputCode2.text + inputCode3.text + inputCode4.text}',
       'email': AccountStorage.readEmail()
     }).then((value) => {
           verifyCodeModel = value as VerifyCodeModel,
-          // print('verifyCode=========> $verifyCodeModel'),
           showModalBottomSheet(
               context: context, builder: (context) => ResetPasswordModal())
         });

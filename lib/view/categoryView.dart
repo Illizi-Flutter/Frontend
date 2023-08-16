@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:illizi/controllers/categorieController.dart';
-import 'package:illizi/models/CategorieModel.dart';
-import 'package:illizi/models/addProduitModel.dart';
 import 'package:illizi/view/rechercheView.dart';
 import 'package:illizi/widget/customAppBar2.dart';
 import 'package:illizi/widget/customButton.dart';

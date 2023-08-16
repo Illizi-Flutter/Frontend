@@ -28,13 +28,15 @@ class Data {
   String? email;
   String? newPassword;
   String? confirmPassword;
+  int? resetCode;
 
-  Data({this.email, this.newPassword, this.confirmPassword});
+  Data({this.email, this.newPassword, this.confirmPassword, this.resetCode});
 
   Data.fromJson(Map<String, dynamic> json) {
     email = json['email'];
     newPassword = json['newPassword'];
     confirmPassword = json['confirmPassword'];
+    resetCode = json['resetCode'];
   }
 
   Map<String, dynamic> toJson() {
@@ -42,6 +44,7 @@ class Data {
     data['email'] = this.email;
     data['newPassword'] = this.newPassword;
     data['confirmPassword'] = this.confirmPassword;
+    data['resetCode'] = this.resetCode;
     return data;
   }
 }

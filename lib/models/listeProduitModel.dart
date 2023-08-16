@@ -30,31 +30,28 @@ class ListeProduitModel extends AbstractJsonResource {
 }
 
 class Data {
+  String? id;
   String? nom;
   int? prix;
   int? quantity;
-  bool? isEnabled;
-  String? userId;
   String? username;
   String? imageUser;
   String? imageProd;
 
   Data(
-      {this.nom,
-        this.prix,
-        this.quantity,
-        this.isEnabled,
-        this.userId,
-        this.username,
-        this.imageUser,
-        this.imageProd});
+      {this.id,
+      this.nom,
+      this.prix,
+      this.quantity,
+      this.username,
+      this.imageUser,
+      this.imageProd});
 
   Data.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     nom = json['nom'];
     prix = json['prix'];
     quantity = json['quantity'];
-    isEnabled = json['isEnabled'];
-    userId = json['user_id'];
     username = json['username'];
     imageUser = json['imageUser'];
     imageProd = json['imageProd'];
@@ -62,11 +59,10 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['nom'] = this.nom;
     data['prix'] = this.prix;
     data['quantity'] = this.quantity;
-    data['isEnabled'] = this.isEnabled;
-    data['user_id'] = this.userId;
     data['username'] = this.username;
     data['imageUser'] = this.imageUser;
     data['imageProd'] = this.imageProd;

@@ -21,9 +21,9 @@ class CustomAppBar2 extends StatelessWidget {
         children: [
           IconButton(onPressed: (){
             Navigator.of(context).pop();
-          }, icon: Icon(icon, color: Colors.white,)),
+          }, icon: Icon(icon, color: Colors.white,size: 32,)),
           Text('$titre', style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white
+            fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white
           ),)
         ],
       ),

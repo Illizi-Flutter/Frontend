@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:illizi/networking/registerApi.dart';
 import 'package:illizi/view/loginView.dart';
 
-import '../models/userModel.dart';
 import '../models/registerUserModel.dart';
 
 class RegisterController extends GetxController {

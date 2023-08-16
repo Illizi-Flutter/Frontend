@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:illizi/controllers/registerController.dart';
-import 'package:illizi/view/loginView.dart';
 
 import '../widget/customBackgroundImage.dart';
 import '../widget/customButton.dart';
 import '../widget/customTextField.dart';
-import 'listeView.dart';
 
 class RegisterView extends GetView<RegisterController> {
 

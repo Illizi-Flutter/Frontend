@@ -2,17 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:illizi/controllers/loginController.dart';
-import 'package:illizi/view/categoryView.dart';
-import 'package:illizi/view/listeView.dart';
 import 'package:illizi/view/registerView.dart';
 import 'package:illizi/widget/customBackgroundImage.dart';
 import 'package:illizi/widget/customButton.dart';
-import 'package:illizi/widget/customAppBar2.dart';
 import 'package:illizi/widget/customTextField.dart';
 
 import '../widget/emailModal.dart';
-import '../widget/resetPasswordModal.dart';
-import 'changePasswordPage.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
