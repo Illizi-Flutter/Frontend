@@ -71,6 +71,7 @@ class ResetPasswordModal extends GetView<LoginController> {
                  ),
                  CustomModalTextField(
                    textEditingController: controller.password,
+                   obscureText: true,
 
                  ),
                  const SizedBox(
@@ -90,6 +91,7 @@ class ResetPasswordModal extends GetView<LoginController> {
                  ),
                  CustomModalTextField(
                    textEditingController: controller.confirmPassword,
+                   obscureText: true,
 
                  ),
                  const SizedBox(

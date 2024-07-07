@@ -96,7 +96,7 @@ class LoginView extends GetView<LoginController> {
                         label: 'Password',
                         hintText:
                             'Enter secure password between 6 and 8 characters',
-                        icon: Icon(Icons.lock_rounded,
+                        icon: const Icon(Icons.lock_rounded,
                             size: 40, color: Colors.blue),
                         obscureText: true,
                         suffixIcon: IconButton(

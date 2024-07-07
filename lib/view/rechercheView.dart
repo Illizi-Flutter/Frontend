@@ -27,7 +27,6 @@ class _RechercheViewState extends State<RechercheView> {
       const SizedBox(
         height: 20,
       ),
-      const Text('data'),
       ListView.builder(
         shrinkWrap: true,
         itemCount: items.length,

@@ -5,9 +5,10 @@ class CustomModalTextField extends StatelessWidget {
   final String? label;
   final Icon? suffixIcon;
   final TextEditingController? textEditingController;
+  final bool obscureText;
 
   const CustomModalTextField(
-      {super.key, this.label, this.suffixIcon, this.textEditingController});
+      {super.key, this.label, this.suffixIcon, this.textEditingController, required this.obscureText});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class CustomModalTextField extends StatelessWidget {
             ),
             child: TextField(
               controller: textEditingController,
+              obscureText: obscureText,
               decoration: const InputDecoration(
                 border: InputBorder.none,
               ),

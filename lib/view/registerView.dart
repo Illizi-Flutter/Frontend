@@ -187,7 +187,7 @@ class RegisterView extends GetView<RegisterController> {
                                 activeColor: Colors.blue,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                title: Text("Admin"),
+                                title: Text("Boutique"),
                                 tileColor: Colors.blue.shade100,
                                 // onChanged: (value) {
                                 //   controller.role.text = value.toString();

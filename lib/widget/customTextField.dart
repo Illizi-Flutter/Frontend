@@ -45,4 +45,3 @@ class CustomTextField extends StatelessWidget{
     );
   }
 }
-//Enter secure password between 6 and 8 characters

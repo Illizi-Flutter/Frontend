@@ -72,6 +72,7 @@ class EmailModal extends GetView<LoginController> {
                     CustomModalTextField(
                       textEditingController: controller.emailCode,
                       label: 'example@gmail.com',
+                      obscureText: false,
                     ),
                     const SizedBox(
                       height: 14,

@@ -17,7 +17,7 @@ class ChangePasswordPage extends GetView<LoginController> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-    margin: EdgeInsets.all(40),
+    margin: const EdgeInsets.all(40),
        //color: Colors.red,
           child:
           SingleChildScrollView(child:  Column(
@@ -29,7 +29,7 @@ class ChangePasswordPage extends GetView<LoginController> {
                  // margin: const EdgeInsets.all(),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                       ),
                       const Align(
@@ -55,6 +55,7 @@ class ChangePasswordPage extends GetView<LoginController> {
                               textAlign: TextAlign.left)),
                       CustomModalTextField(
                         textEditingController: controller.oldPassword,
+                        obscureText: false,
                       ),
                       const SizedBox(
                         height: 8,
@@ -72,6 +73,7 @@ class ChangePasswordPage extends GetView<LoginController> {
                       ),
                       CustomModalTextField(
                         textEditingController: controller.password,
+                        obscureText: false,
 
                       ),
                       const SizedBox(
@@ -91,6 +93,7 @@ class ChangePasswordPage extends GetView<LoginController> {
                       ),
                       CustomModalTextField(
                         textEditingController: controller.confirmPassword,
+                        obscureText: false,
 
                       ),
                       const SizedBox(

@@ -6,6 +6,7 @@ import 'package:illizi/networking/loginApi.dart';
 import 'package:illizi/view/categoryView.dart';
 
 import 'package:illizi/view/listeView.dart';
+import 'package:illizi/widget/activationCodeModal.dart';
 
 import '../models/userModel.dart';
 import '../models/changePasswordModel.dart';
@@ -86,7 +87,7 @@ class LoginController extends GetxController {
           AccountStorage.saveEmail('${resetCodeModel?.emailCode}'),
           emailCode.text = '',
           showModalBottomSheet(
-              context: context, builder: (context) => ResetPasswordModal())
+              context: context, builder: (context) => ActivationCodeModal())
         });
   }
 
